@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	
+	body{
+		background-image:url(menuImg/noise.png);
+	}
+	#center{
+		width:1000px;
+		height:800px;
+		margin:0 auto;
+	}
+	#center>img{
+		position:absolute;
+	}
+	 #center>ul{
+	 	position:relative;
+	 	left:100px;
+	 	top:55px;
+	 }
+
+	li{
+		float:left;
+		width:150px;
+		font-size:2em;
+		font-weight:bold;
+		list-style-type:none;
+		margin-right:5px;
+	}
+	li>img{
+		position:relative;
+	}
+	
+		
+</style>
+
+<script>
+	var img2 = "<img id='eve' src='menuImg/label.png'/>";
+	var top = -300;
+	$(function(){
+
+		var tag = "<img src='menuImg/bg1.jpg'/>";
+		tag += "<img id='tt' src='../img/2.png'/>"
+		tag += "<ul><li>menu1</li><li>menu2</li><li>menu3</li><li>menu4</li><li>menu5</li></ul>"
+		//tag += "<ul><li>"+img2+"</li></ul>"
+		$("#center").html(tag);
+		$("#center>img:eq(1)").css({
+			width:"1000px",
+			top : "150px"
+		})
+		
+		$("li").hover(function(){
+			$(this).append(img2);
+			$("#eve").css()
+			for(i=0; i<300; i++){
+				$("#eve").css("top",)
+			}
+					
+/*
+			var left = 0, stepX=-5, timer; //여기서 중요. 방향은 stepX가 -인지 +인지에 따라 방향이 결정된다. step으로 쓰면 예약어라서 에러발생가능성.
+			function postMove(){
+				left += stepX;
+				document.getElementById("postList").style.left = left+"px";
+				if(left<=-820){
+					stepX=5;
+				}
+				if(left>=0){
+					stepX=-5;
+				}
+			} 
+ 
+ 
+ */*/			
+			
+		},function(){
+			
+		});
+	});
+	
+	
+	
+</script>
+ 
+</head>
+<body>
+<div id="center"></div>
+</body>
+</html>

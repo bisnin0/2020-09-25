@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<style>
+	.c1{
+		color:pink;
+		font-size:2em;
+	}
+</style>
+
+<script>
+	// onclick, onload, onmouseover, onmouseout, onmouseenter, onmouseleave, onmousemove
+	// onkeyup, onkeydown, onkeypress, onkeyrelease, onfocus, onblur, onsubmit, hover .... 등등 자바스크립트 이벤트가 있는데
+	// jquery에서는 앞에 on을 빼고 사용한다고 보면 된다?
+
+	$(function(){
+		//--- jquery 이벤트 처리 방법 1
+		// h1태그를 클릭이벤트 처리
+		$("h1").click(function(){
+			//이벤트가 발생하면 실행됨...
+			// this : 현재 클릭이벤트가 발생한 객체
+			$(this).css("background-color","yellow");  //방금 이벤트가 발생한 객체 this
+			
+			console.log($(this).html(), $(this).text()); //내용을 읽어온다.
+			
+			$(this).html($(this).text()+"★");//이벤트가 발생한 객체의 텍스트를 구해서 별 표시 하나를 추가한다.
+			
+			$(this).append("☆");  //이건 내용 상관없이 추가할수있네.
+			$(this).prepend("☆");
+			//h1의 이벤트가 발생한 객체의 index를 알아낸다.
+			console.log($("h1").index(this));
+			
+			$("#result").append("이벤트가 발생되었습니다..<br/>");
+			
+		});
+		
+		//=== 이벤트 처리 방법 2
+		//		     이벤트 종류		이벤트가 발생하면 실행할 코드를 function안에다가
+		$("h2").on('click',		 function(){
+			//$(this).css("color", "lightblue"); //방금 이벤트가 생긴 객체에 스타일시트 컬러를 셋팅한다.
+			$(this).toggleClass('c1'); //클래스가 있으면 지우고, 없으면 추가하고.. 
+			//위에 c1에대한 스타일을 정해놨으니 클릭하면 c1이 들어가며 스타일이 적용되고, 다시클릭하면 클래스가 빠지며 스타일이 적용해제된다.
+		});
+		
+		
+		//=== 이벤트 처리 방법 3
+		// onmouseenter, onmouseleave를 한번에 정의하기
+		//				왼쪽에서 onmouseenter처리
+		$("h1").on({mouseenter:function(){      // $("h1").on({ , });
+			$(this).css("background-color","orange");
+			
+		//	오른쪽에서 onmouseleave처리
+		},mouseleave:function(){
+			$(this).css("background-color","cyan");
+		}
+		});
+		
+		//=== 이벤트 처리 방법 4
+		// 하나의 객체에 다른종류의 이벤트가 여러개 발생할때
+		$("input").on('click focus', function(){ //여기서 input박스에 포커스가 가는건 tab키로 포커스 이동시키는것. 마우스 온이 아님
+			$(this).val("이벤트가 발생하였습니다."); //input박스니까 val로 바꿀수있다.
+		});
+		
+	});
+	
+
+</script>
+</head>
+<body>
+<h1>제이쿼리 이벤트처리1</h1>
+<h1>제이쿼리 이벤트처리2</h1>
+<h1>제이쿼리 이벤트처리3</h1>
+<h1>제이쿼리 이벤트처리4</h1>
+<h2>제이쿼리 이벤트처리5</h2>
+<h2>제이쿼리 이벤트처리6</h2>
+<h2>제이쿼리 이벤트처리7</h2>
+<h2>제이쿼리 이벤트처리8</h2>
+
+<div id="result"></div>
+<input type="button" value="123456"/>
+<input type="button" value="abcdef"/>
+<input type="button" value="가나다라"/>
+</body>
+</html>

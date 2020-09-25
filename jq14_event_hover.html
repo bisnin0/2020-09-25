@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.c1{
+		color:green;
+		font-size:2em;
+	}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+
+<script>
+	$(function(){
+		//=== hover 이벤트 .. -> 마우스오버와 마우스아웃을 가지는 이벤트. 마우스 오버와 아웃 이벤트를 다 가지고 있는게 hover.
+		var cnt=0;
+		$("h1").hover(function(){      //$("h1").hover( , );        
+			cnt++; //이벤트 발생 횟수를 증가
+			//마우스 오버일때 실행
+			$(this).css("color","red");
+				
+			if(cnt>5){
+				//======== 이벤트 종료
+				$(this).off(); //만약 this가 아니라 h1을 했으면 5개가 동시에 적용
+			}
+		} , function(){
+			//마우스 아웃일때 실행
+			$(this).css("color","blue");
+	
+		});
+		
+		//=== 한번만 이벤트 처리
+		// one()
+		$("h2").one("mouseover",function(){
+			$(this).addClass('c1');
+			console.log('111111');
+			
+		});
+	});
+</script>
+</head>
+<body>
+<h1>hover 이벤트 처리 테스트중...</h1>
+<h1>hover 이벤트 처리 테스트중...</h1>
+<h1>hover 이벤트 처리 테스트중...</h1>
+<h1>hover 이벤트 처리 테스트중...</h1>
+<h1>hover 이벤트 처리 테스트중...</h1>
+<h2>one 이벤트 테스트 중</h2>
+<h2>one 이벤트 테스트 중</h2>
+<h2>one 이벤트 테스트 중</h2>
+<h2>one 이벤트 테스트 중</h2>
+<h2>one 이벤트 테스트 중</h2>
+</body>
+</html>
